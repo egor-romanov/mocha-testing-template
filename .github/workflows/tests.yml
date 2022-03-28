@@ -57,4 +57,4 @@ jobs:
         with: 
           keep_files: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: gh-pages/allure-history
+          publish_dir: gh-pages

@@ -39,9 +39,12 @@ jobs:
         uses: actions/checkout@v2
         if: always()
         continue-on-error: true
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           ref: gh-pages
           path: gh-pages
+          subfolder: reports
 
       - name: Allure Report action
         uses: simple-elf/allure-report-action@master
@@ -58,3 +61,5 @@ jobs:
           keep_files: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: gh-pages
+          commit_message: 'tests: update'
+          force_orphan: true

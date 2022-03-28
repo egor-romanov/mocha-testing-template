@@ -41,7 +41,8 @@ jobs:
         continue-on-error: true
         with:
           ref: gh-pages
-          path: gh-pages/reports
+          path: gh-pages
+          subfolder: reports
 
       - name: Allure Report action
         uses: simple-elf/allure-report-action@master

@@ -42,7 +42,12 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
-          subfolder: reports
+          
+      - name: Setup assets
+        run: |
+          mkdir allure-history
+          mv ./gh-pages/reports ./allure-history/
+          rm -rf ./gh-pages
 
       - name: Allure Report action
         uses: simple-elf/allure-report-action@master
@@ -57,7 +62,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v2
         with: 
           destination_dir: ./reports
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-history

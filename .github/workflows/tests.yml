@@ -44,6 +44,8 @@ jobs:
           path: gh-pages
           
       - name: Setup assets
+        if: always()
+        continue-on-error: true
         run: |
           mkdir allure-history
           mv ./gh-pages/reports ./allure-history/

@@ -39,27 +39,24 @@ jobs:
         uses: actions/checkout@v2
         if: always()
         continue-on-error: true
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          repository: egor-romanov/external-reports
           ref: gh-pages
           path: gh-pages
-          subfolder: reports
 
       - name: Allure Report action
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
           allure_results: allure-results
-          allure_history: gh-pages/allure-history
+          allure_history: allure-history
           keep_reports: 20
 
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v2
-        with: 
-          destination_dir: reports
         env:
+          EXTERNAL_REPOSITORY: egor-romanov/external-reports
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: gh-pages
+          PUBLISH_DIR: allure-history

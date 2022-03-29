@@ -48,7 +48,11 @@ jobs:
         uses: simple-elf/allure-report-action@master
         if: always()
         env: 
+          REPOSITORY_OWNER_SLASH_NAME: external-reports
           REPOSITORY_NAME: external-reports
+          GITHUB_REPOSITORY: external-reports
+          INPUT_GITHUB_REPO: external-reports
+          GITHUB_ACTION_REPOSITORY: external-reports
         with:
           allure_results: allure-results
           allure_history: allure-history

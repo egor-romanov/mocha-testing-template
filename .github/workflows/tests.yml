@@ -51,6 +51,7 @@ jobs:
           github_repo: external-reports
           allure_results: allure-results
           allure_history: allure-history
+          subfolder: mocha-template
           keep_reports: 20
 
       - name: Deploy report to Github Pages
@@ -71,4 +72,4 @@ jobs:
           context: 'Test report'
           state: 'success'
           sha: ${{ github.event.pull_request.head.sha }}
-          target_url: https://egor-romanov.github.io/external-reports/${{ github.run_number }}
+          target_url: https://egor-romanov.github.io/external-reports/mocha-template/${{ github.run_number }}
